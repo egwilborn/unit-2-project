@@ -1,1 +1,33 @@
-<%- include('../partials/header') %> <%- include('../partials/footer') %>
+<%- include('../partials/header') %>
+
+<h1 id="podasts">Podcasts</h1>
+<%if(user){%>
+<a id="add-a-podcast" href="/podcasts/new">Add a Podcast</a>
+<% } else {%>
+<p>Login to Add a Podcast!</p>
+<%}%>
+<table>
+  <thead>
+    <th>Title</th>
+    <th>Hosts</th>
+    <th>Genre</th>
+    <th>Ratings</th>
+    <th>Affiliation</th>
+    <th>No. of Listeners</th>
+    <th>First Aired</th>
+  </thead>
+  <tbody>
+    <% podcasts.forEach(function(p){%>
+    <tr>
+      <td><a href="/podcasts/<%=p._id%>"><%=p.title%></a></td>
+      <td><%=p.hosts%></td>
+      <td><%=p.genre%></td>
+      <td>Ratings</td>
+      <td><%=p.affiliation%></td>
+      <td></td>
+      <td><%=p.firstAired%></td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>
+<%- include('../partials/footer') %>

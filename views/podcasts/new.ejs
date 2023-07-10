@@ -1,0 +1,39 @@
+<%- include('../partials/header') %>
+
+<form id="new-podcast-form" action="/podcasts" method="POST">
+  <label>Title:</label>
+  <input type="text" name="title" />
+  <br />
+  <label>Hosts:</label>
+  <input type="text" name="hosts" />
+  <br />
+  <label>Description:</label>
+  <textarea name="description"></textarea>
+  <br />
+  <label>Genre:</label>
+  <select name="genre">
+    <option value="News" selected>News</option>
+    <option value="Pop Culture">Pop Culture</option>
+    <option value="Science">Science</option>
+    <option value="Fiction">Fiction</option>
+    <option value="Politics">Politics</option>
+    <option value="Health">Health</option>
+    <option value="Education">Education</option>
+    <option value="History">History</option>
+    <option value="Sports">Sports</option>
+    <option value="True Crime">True Crime</option>
+  </select>
+  <br />
+  <label>Affiliation:</label>
+  <input type="text" name="affiliation" />
+  <br />
+  <label>First Aired (Year):</label>
+  <input name="firstAired" type="number" placeholder="ex: 2018" />
+  <br />
+  <label>Still Making New Episodes?</label>
+  <input name="newEpisodes" type="checkbox" />
+  <br />
+  <input type="submit" value="Add a Podcast" />
+</form>
+
+<%- include('../partials/footer') %>

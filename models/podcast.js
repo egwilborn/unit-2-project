@@ -7,7 +7,7 @@ const Schema = mongoose.Schema;
 const reviewSchema = new Schema(
   {
     content: { type: String, required: true },
-    rating: { type: number, min: 1, max: 5 },
+    rating: { type: Number, min: 1, max: 5 },
     //one review belongs to one user, one user has many reviews
     userId: { type: Schema.Types.ObjectId, ref: "User", required: true },
     userName: String,
@@ -24,7 +24,7 @@ const podcastSchema = new Schema(
     hosts: String,
     description: { type: String, required: true },
     genre: String,
-    firstAired: Date,
+    firstAired: Number,
     newEpisodes: Boolean,
     affiliation: String,
     reviews: [reviewSchema],
