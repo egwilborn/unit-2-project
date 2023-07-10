@@ -10,7 +10,6 @@ module.exports = {
 
 async function index(req, res) {
   const podcasts = await Podcast.find({});
-  console.log(podcasts);
   res.render("podcasts/index", { podcasts });
 }
 
@@ -19,7 +18,6 @@ function newPodcast(req, res) {
 }
 
 async function create(req, res) {
-  console.log(req.body);
   try {
     //req.body contains all the information in the correct format except for newEpisodes which is a checkbox
     //need to change newEpisodes from checkbox into a boolean
@@ -34,9 +32,8 @@ async function create(req, res) {
 }
 
 async function show(req, res) {
-  console.log(req.params.id);
   const podcast = await Podcast.findById(req.params.id);
-  console.log(podcast);
+  const reviews = podcast.reviews;
   //render the show page:
-  res.render("podcasts/show", { podcast });
+  res.render("podcasts/show", { podcast, reviews });
 }

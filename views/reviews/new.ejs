@@ -38,32 +38,25 @@
   </div>
 </section>
 <section>
-  <h1>Reviews</h1>
-  <p>ratings avg</p>
-  <%if (user) { %>
-  <p class="leave-review">
-    <a href="/podcasts/<%=podcast._id%>/reviews/new"> Leave a Review!</a>
-  </p>
-  <%} else {%>
-  <p class="leave-review">Login to Leave a Review!</p>
-  <%}%>
-  <table id="reviews-table">
-    <thead>
-      <th>User</th>
-      <th>Review</th>
-      <th>Rating</th>
-      <th>Would You Recommend?</th>
-    </thead>
-    <tbody>
-      <%reviews.forEach(function(r) { %>
-      <tr>
-        <td><%=r.userName%></td>
-        <td><%=r.content%></td>
-        <td><%=r.rating%></td>
-        <td><%if (r.recommended) {%> Yes <% } else {%> No <%}%></td>
-      </tr>
-      <%})%>
-    </tbody>
-  </table>
+  <h1>Leave a Review of <%=podcast.title%></h1>
+  <form action="/podcasts/<%=podcast._id%>/reviews" method="POST">
+    <label>What to you think of <%=podcast.title%>?</label>
+    <textarea name="content"></textarea>
+    <br />
+    <label>Rating </label>
+    <select name="rating">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5" selected>5</option>
+    </select>
+    <br />
+    <label>Would you recommend this podcast?</label>
+    <input type="checkbox" name="recommended" />
+    <br />
+    <input type="submit" value="Post Your Review" />
+  </form>
+
+  <%- include('../partials/footer') %>
 </section>
-<%- include('../partials/footer') %>
