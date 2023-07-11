@@ -3,7 +3,14 @@
   <h1><%=podcast.title%></h1>
   <div id="listeners-airing">
     <%if(user) {%>
-     <p>Follow <%=podcast.title%> to see when new episodes come out!</p>
+      <% if (podcast.usersFollowing.includes(user._id)) { %>
+       <p>You are following <%=podcast.title%>.</p>
+      <% } else { %>
+      <form action="/podcasts/<%= podcast._id %>/follow?_method=PUT" method="POST">
+        <button type="submit">Follow</button>
+      </form>
+     <p>Follow <%=podcast.title%> to hear when new episodes come out!</p>
+     <%}%>
       <%} else {%>
         <p>Login to follow the show!</p>
         <%}%>

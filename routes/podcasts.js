@@ -9,6 +9,8 @@ router.get("/", podcastsCtrl.index);
 router.get("/new", podcastsCtrl.new);
 //for navigating to a form to upate the podcast details
 router.get("/:id/edit", podcastsCtrl.edit);
+//for adding a user as a follower
+router.put("/:id/follow", podcastsCtrl.follow);
 //for creating a new podcast in the db
 router.post("/", podcastsCtrl.create);
 //for going to a specific podcast page
@@ -17,5 +19,6 @@ router.get("/:id", podcastsCtrl.show);
 router.put("/:id", podcastsCtrl.update);
 //for deleting a podcast entry
 router.delete("/:id", podcastsCtrl.delete);
+
 
 module.exports = router;

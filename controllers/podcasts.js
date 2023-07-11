@@ -9,6 +9,7 @@ module.exports = {
   edit,
   update,
   delete: deletePodcast,
+  follow,
 };
 
 async function index(req, res) {
@@ -82,6 +83,18 @@ async function deletePodcast(req, res) {
   try {
     await Podcast.findOneAndDelete({ _id: req.params.id });
     res.redirect("/podcasts");
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+async function follow(req, res) {
+  try {
+    const podcast = await Podcast.findById(req.params.id);
+    podcast.usersFollowing.push(req.user._id);
+    await podcast.save();
+    console.log(podcast.usersFollowing);
+    res.redirect(`/podcasts/${req.params.id}`);
   } catch (err) {
     console.log(err);
   }
