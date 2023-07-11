@@ -2,13 +2,21 @@
 <section id="podcasts">
   <h1><%=podcast.title%></h1>
   <div id="listeners-airing">
+    <%if(user) {%>
+     <p>Follow <%=podcast.title%> to see when new episodes come out!</p>
+      <%} else {%>
+        <p>Login to follow the show!</p>
+        <%}%>
+  
     <p>
       Making New Episodes? <% if (podcast.newEpisodes) {%>
       <img
+        id="checkmark"
         src="https://e7.pngegg.com/pngimages/325/286/png-clipart-check-mark-symbol-black-check-mark-angle-text-thumbnail.png"
       />
       Yes <%} else {%>
       <img
+        id="xmark"
         src="https://img1.pnghut.com/6/4/3/CfmpYijLX6/black-and-white-icon-design-check-mark-area-cross.jpg"
       />
       No <%}%>
@@ -39,8 +47,11 @@
 </section>
 <section>
   <h1>Reviews</h1>
-  <p>ratings avg</p>
-  <%if (user) { %>
+  <% let sum = 0; %> <%podcast.reviews.forEach(function(r) {%> <% return sum =
+  (sum + r.rating)%> <% }) %>
+  <p><%=Math.floor(sum/podcast.reviews.length)%>/5 stars</p>
+  <p><%if (user) { %></p>
+
   <p class="leave-review">
     <a href="/podcasts/<%=podcast._id%>/reviews/new"> Leave a Review!</a>
   </p>
@@ -53,6 +64,7 @@
       <th>Review</th>
       <th>Rating</th>
       <th>Would You Recommend?</th>
+      <th></th>
     </thead>
     <tbody>
       <%reviews.forEach(function(r) { %>
@@ -61,6 +73,14 @@
         <td><%=r.content%></td>
         <td><%=r.rating%></td>
         <td><%if (r.recommended) {%> Yes <% } else {%> No <%}%></td>
+        <td>
+          <% if (user && user._id.equals(r.userId)) { %>
+            <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
+              <button type="submit">X</button>
+            </form>
+            / <a href = "/reviews/<%=r._id%>/edit">Edit</a>
+            <%}%>
+        </td>
       </tr>
       <%})%>
     </tbody>

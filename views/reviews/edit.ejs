@@ -38,24 +38,26 @@
   </div>
 </section>
 <section>
-  <h1>Leave a Review of <%=podcast.title%></h1>
-  <form action="/podcasts/<%=podcast._id%>/reviews" method="POST">
+  <h1>Update Your Review of <%=podcast.title%></h1>
+  <form action="/reviews/<%=review._id%>?_method=PUT" method="POST">
+
+
     <label>What to you think of <%=podcast.title%>?</label>
-    <textarea name="content"></textarea>
+    <textarea name="content"><%=review.content%></textarea>
     <br />
     <label>Rating </label>
     <select name="rating">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5" selected>5</option>
+      <option <% if(review.rating === 1) {%> selected <%}%>value="1">1</option>
+      <optio <% if(review.rating === 2) {%> selected <%}%> value="2">2</option>
+      <option <% if(review.rating === 3) {%> selected <%}%>value="3">3</option>
+      <option <% if(review.rating === 4) {%> selected <%}%>value="4">4</option>
+      <option <% if(review.rating === 5) {%> selected <%}%>value="5">5</option>
     </select>
     <br />
     <label>Would you recommend this podcast?</label>
-    <input type="checkbox" name="recommended" />
+    <input <% if(review.recommended === true) {%> checked <%}%> type="checkbox" name="recommended" />
     <br />
-    <input type="submit" value="Post Your Review" />
+    <input type="submit" value="Update Your Review" />
   </form>
 </section>
 

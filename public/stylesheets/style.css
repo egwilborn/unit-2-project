@@ -22,7 +22,7 @@
   margin-top: -5px;
 }
 
-img {
+#logo {
   height: 80px;
   width: 80px;
 }
@@ -33,4 +33,13 @@ nav {
 }
 .login {
   align-self: flex-end;
+}
+
+#checkmark {
+  height: 10px;
+  width: 10px;
+}
+#xmark {
+  height: 10px;
+  width: 10px;
 }

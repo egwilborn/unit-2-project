@@ -22,9 +22,11 @@
       <td><a href="/podcasts/<%=p._id%>"><%=p.title%></a></td>
       <td><%=p.hosts%></td>
       <td><%=p.genre%></td>
-      <td>Ratings</td>
+      <% let sum = 0; %> <%p.reviews.forEach(function(r) {%> <% return sum =
+      (sum + r.rating)%> <% }) %>
+      <td><%=Math.floor(sum/p.reviews.length)%></td>
       <td><%=p.affiliation%></td>
-      <td></td>
+      <td><%=p.usersFollowing.length%></td>
       <td><%=p.firstAired%></td>
     </tr>
     <% }) %>

@@ -9,8 +9,12 @@ module.exports = {
 };
 
 async function index(req, res) {
-  const podcasts = await Podcast.find({});
-  res.render("podcasts/index", { podcasts });
+  try {
+    const podcasts = await Podcast.find({});
+    res.render("podcasts/index", { podcasts });
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 function newPodcast(req, res) {
@@ -32,8 +36,13 @@ async function create(req, res) {
 }
 
 async function show(req, res) {
-  const podcast = await Podcast.findById(req.params.id);
-  const reviews = podcast.reviews;
-  //render the show page:
-  res.render("podcasts/show", { podcast, reviews });
+  try {
+    //find the correct podcast for the show page and the corresponding review to pass into res.render
+    const podcast = await Podcast.findById(req.params.id);
+    const reviews = podcast.reviews;
+    //render the show page:
+    res.render("podcasts/show", { podcast, reviews });
+  } catch (err) {
+    console.log(err);
+  }
 }
