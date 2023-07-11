@@ -1,0 +1,42 @@
+<%- include('../partials/header') %>
+
+<form id="edit-podcast-form" action="/podcasts/<%=podcast._id%>?_method=PUT" method="POST">
+  <label>Title:</label>
+  <input value = "<%=podcast.title%>" type="text" name="title" />
+  <br />
+  <label>Hosts:</label>
+  <input value = "<%=podcast.hosts%>"type="text" name="hosts" />
+  <br />
+  <label>Description:</label>
+  <textarea name="description"><%=podcast.description%></textarea>
+  <br />
+  <label>Genre:</label>
+  <select name="genre">
+    <option <% if(podcast.genre === "News") {%> selected <%}%> value="News">News</option>
+    <option <% if(podcast.genre === "Pop Culture") {%> selected <%}%> value="Pop Culture">Pop Culture</option>
+    <option <% if(podcast.genre === "Science") {%> selected <%}%> value="Science">Science</option>
+    <option <% if(podcast.genre === "Fiction") {%> selected <%}%> value="Fiction">Fiction</option>
+    <option <% if(podcast.genre === "Politics") {%> selected <%}%> value="Politics">Politics</option>
+    <option <% if(podcast.genre === "Health") {%> selected <%}%> value="Health">Health</option>
+    <option <% if(podcast.genre === "Education") {%> selected <%}%> value="Education">Education</option>
+    <option <% if(podcast.genre === "History") {%> selected <%}%> value="History">History</option>
+    <option <% if(podcast.genre === "Sports") {%> selected <%}%> value="Sports">Sports</option>
+    <option <% if(podcast.genre === "True Crime") {%> selected <%}%> value="True Crime">True Crime</option>
+  </select>
+  <br />
+  <label>Affiliation:</label>
+  <input value = "<%=podcast.affiliation%>" type="text" name="affiliation" />
+  <br />
+  <label>First Aired (Year):</label>
+  <input value = "<%=podcast.firstAired%>"name="firstAired" type="number" placeholder="ex: 2018" />
+  <br />
+  <label>Still Making New Episodes?</label>
+  <input <% if(podcast.newEpisodes === true) {%> checked <%}%>name="newEpisodes" type="checkbox" />
+  <br />
+  <input type="submit" value="Update This Podcast" />
+</form>
+<br>
+<form action="/podcasts/<%= podcast._id %>?_method=DELETE" method="POST">
+    <button type="submit">Delete This Podcast</button>
+
+<%- include('../partials/footer') %>

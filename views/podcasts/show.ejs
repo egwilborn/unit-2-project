@@ -43,13 +43,22 @@
         <td><%=podcast.firstAired%></td>
       </tr>
     </table>
+    <% if (user) { %>
+      <a href="/podcasts/<%=podcast._id%>/edit">Update Details</a>   
+    <% } %>
   </div>
 </section>
 <section>
   <h1>Reviews</h1>
   <% let sum = 0; %> <%podcast.reviews.forEach(function(r) {%> <% return sum =
   (sum + r.rating)%> <% }) %>
-  <p><%=Math.floor(sum/podcast.reviews.length)%>/5 stars</p>
+ <% if (Math.floor(sum/podcast.reviews.length) > 1) { %>
+  <p>
+    <%=Math.floor(sum/podcast.reviews.length)%> / 5 stars
+  </p>
+  <% } else {  %>
+      <p> No Reviews Yet!</p>
+<%}%>
   <p><%if (user) { %></p>
 
   <p class="leave-review">

@@ -24,7 +24,14 @@
       <td><%=p.genre%></td>
       <% let sum = 0; %> <%p.reviews.forEach(function(r) {%> <% return sum =
       (sum + r.rating)%> <% }) %>
-      <td><%=Math.floor(sum/p.reviews.length)%></td>
+      
+        <% if (Math.floor(sum/p.reviews.length) > 1) { %>
+          <td>
+            <%=Math.floor(sum/p.reviews.length)%>
+          </td>
+          <% } else {  %>
+              <td> No Reviews Yet!</td>
+      <%}%>
       <td><%=p.affiliation%></td>
       <td><%=p.usersFollowing.length%></td>
       <td><%=p.firstAired%></td>

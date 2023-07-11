@@ -6,6 +6,9 @@ module.exports = {
   new: newPodcast,
   create,
   show,
+  edit,
+  update,
+  delete: deletePodcast,
 };
 
 async function index(req, res) {
@@ -42,6 +45,43 @@ async function show(req, res) {
     const reviews = podcast.reviews;
     //render the show page:
     res.render("podcasts/show", { podcast, reviews });
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+async function edit(req, res) {
+  try {
+    //find the correct podcast to pass into the edit form
+    const podcast = await Podcast.findById(req.params.id);
+    res.render("podcasts/edit", { podcast });
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+async function update(req, res) {
+  req.body.newEpisodes = !!req.body.newEpisodes;
+  try {
+    const podcast = await Podcast.findById(req.params.id);
+    podcast.title = req.body.title;
+    podcast.hosts = req.body.hosts;
+    podcast.description = req.body.description;
+    podcast.genre = req.body.genre;
+    podcast.affiliation = req.body.affiliation;
+    podcast.firstAired = req.body.firstAired;
+    podcast.newEpisodes = req.body.newEpisodes;
+    await podcast.save();
+    res.redirect(`/podcasts/${podcast._id}`);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+async function deletePodcast(req, res) {
+  try {
+    await Podcast.findOneAndDelete({ _id: req.params.id });
+    res.redirect("/podcasts");
   } catch (err) {
     console.log(err);
   }
