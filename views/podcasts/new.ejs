@@ -1,53 +1,50 @@
 <%- include('../partials/header') %>
-<div class = "new-podcast">
-<form id="new-podcast-form" action="/podcasts" method="POST">
-  <div class= "podcast-title">
-  <label>Title:</label>
-  <input type="text" name="title" />
-  </div>
-  <br />
-  <div class = "podcast-hosts">
-  <label>Hosts:</label>
-  <input type="text" name="hosts" />
-  </div>
-  <br />
-  <div class = "podcast-description">
-  <label>Description:</label>
-  <textarea name="description"></textarea>
-  </div>
-  <br />
-  <div class = "podcast-genre">
-  <label>Genre:</label>
-  <select name="genre">
-    <option value="News" selected>News</option>
-    <option value="Pop Culture">Pop Culture</option>
-    <option value="Science">Science</option>
-    <option value="Fiction">Fiction</option>
-    <option value="Politics">Politics</option>
-    <option value="Health">Health</option>
-    <option value="Education">Education</option>
-    <option value="History">History</option>
-    <option value="Sports">Sports</option>
-    <option value="True Crime">True Crime</option>
-  </select>
-  </div>
-  <br />
-  <div class = "podcast-affiliation">
-  <label>Affiliation:</label>
-  <input type="text" name="affiliation" />
-  </div>
-  <br />
-  <div class = "podcast-aired">
-  <label>First Aired (Year):</label>
-  <input name="firstAired" type="number" placeholder="ex: 2018" />
-  </div>
-  <br />
-  <div class= "podcsst-episodes">
-  <label>Still Making New Episodes?</label>
-  <input name="newEpisodes" type="checkbox" />
-  </div>
-  <br />
-  <input type="submit" value="Add a Podcast" />
-</form>
+<div class="new-podcast">
+  <form id="new-podcast-form" action="/podcasts" method="POST">
+    <div class="podcast-title">
+      <label>Title:</label>
+      <input type="text" name="title" />
+    </div>
+    <br />
+    <div class="podcast-hosts"></div>
+    <br />
+    <div class="podcast-description">
+      <label>Description:</label>
+      <textarea name="description"></textarea>
+    </div>
+    <br />
+    <div class="podcast-genre">
+      <label>Genre:</label>
+      <select name="genre">
+        <option value="News" selected>News</option>
+        <option value="Pop Culture">Pop Culture</option>
+        <option value="Science">Science</option>
+        <option value="Fiction">Fiction</option>
+        <option value="Politics">Politics</option>
+        <option value="Health">Health</option>
+        <option value="Education">Education</option>
+        <option value="History">History</option>
+        <option value="Sports">Sports</option>
+        <option value="True Crime">True Crime</option>
+      </select>
+    </div>
+    <br />
+    <div class="podcast-affiliation">
+      <label>Affiliation:</label>
+      <input type="text" name="affiliation" />
+    </div>
+    <br />
+    <div class="podcast-aired">
+      <label>First Aired (Year):</label>
+      <input name="firstAired" type="number" placeholder="ex: 2018" />
+    </div>
+    <br />
+    <div class="podcsst-episodes">
+      <label>Still Making New Episodes?</label>
+      <input name="newEpisodes" type="checkbox" />
+    </div>
+    <br />
+    <input type="submit" value="Add a Podcast" />
+  </form>
 </div>
 <%- include('../partials/footer') %>

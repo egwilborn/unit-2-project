@@ -13,7 +13,9 @@ module.exports = {
 async function newReview(req, res) {
   try {
     //find the podcast that is being reviewed and pass it into res.render
-    const podcast = await Podcast.findById(req.params.id);
+    const podcast = await Podcast.findById(req.params.id)
+      .populate("hosts")
+      .exec();
     res.render("reviews/new", { podcast });
   } catch (err) {
     console.log(err);
@@ -62,7 +64,9 @@ async function edit(req, res) {
     const podcast = await Podcast.findOne({
       "reviews._id": req.params.id,
       "reviews.userId": req.user._id,
-    });
+    })
+      .populate("hosts")
+      .exec();
     const review = podcast.reviews.id(req.params.id);
     res.render("reviews/edit", { podcast, review });
   } catch (err) {

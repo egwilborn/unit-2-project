@@ -1,5 +1,6 @@
 //require models here when needed
 const Podcast = require("../models/podcast");
+const Host = require("../models/host");
 //export functions here
 module.exports = {
   index,
@@ -15,6 +16,9 @@ module.exports = {
 async function index(req, res) {
   try {
     const podcasts = await Podcast.find({});
+    podcasts.forEach(function (p) {
+      p.populate("hosts");
+    });
     res.render("podcasts/index", { podcasts });
   } catch (err) {
     console.log(err);
@@ -42,10 +46,13 @@ async function create(req, res) {
 async function show(req, res) {
   try {
     //find the correct podcast for the show page and the corresponding review to pass into res.render
-    const podcast = await Podcast.findById(req.params.id);
+    const podcast = await Podcast.findById(req.params.id)
+      .populate("hosts")
+      .exec();
     const reviews = podcast.reviews;
+    const hosts = await Host.find({ _id: { $nin: podcast.hosts } });
     //render the show page:
-    res.render("podcasts/show", { podcast, reviews });
+    res.render("podcasts/show", { podcast, reviews, hosts });
   } catch (err) {
     console.log(err);
   }
@@ -93,7 +100,6 @@ async function follow(req, res) {
     const podcast = await Podcast.findById(req.params.id);
     podcast.usersFollowing.push(req.user._id);
     await podcast.save();
-    console.log(podcast.usersFollowing);
     res.redirect(`/podcasts/${req.params.id}`);
   } catch (err) {
     console.log(err);

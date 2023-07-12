@@ -12,6 +12,7 @@ const indexRoutes = require("./routes/index");
 
 const podcastsRouter = require("./routes/podcasts");
 const reviewsRouter = require("./routes/reviews");
+const hostsRouter = require("./routes/hosts");
 
 // create the Express app
 const app = express();
@@ -54,6 +55,7 @@ app.use(function (req, res, next) {
 app.use("/", indexRoutes);
 app.use("/podcasts", podcastsRouter);
 app.use("/", reviewsRouter);
+app.use("/", hostsRouter);
 
 // invalid request, send 404 page
 app.use(function (req, res) {

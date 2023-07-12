@@ -17,11 +17,11 @@ const reviewSchema = new Schema(
     timestamps: true,
   }
 );
-
+//a podcast has many hosts, a host can have many podcasts
 const podcastSchema = new Schema(
   {
     title: { type: String, required: true },
-    hosts: String,
+    hosts: [{ type: mongoose.Schema.Types.ObjectId, ref: "Host" }],
     description: { type: String, required: true },
     genre: String,
     firstAired: Number,

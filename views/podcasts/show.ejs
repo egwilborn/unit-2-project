@@ -1,107 +1,128 @@
 <%- include('../partials/header') %>
-<div class = "show">
-<section class="podcasts">
-  <h1><%=podcast.title%></h1>
-  <div id="listeners-airing">
-    <%if(user) {%>
-      <% if (podcast.usersFollowing.includes(user._id)) { %>
-       <p>You are following <%=podcast.title%>.</p>
+<div class="show">
+  <section class="podcasts">
+    <h1><%=podcast.title%></h1>
+    <div id="listeners-airing">
+      <%if(user) {%> <% if (podcast.usersFollowing.includes(user._id)) { %>
+      <p>You are following <%=podcast.title%>.</p>
       <% } else { %>
-      <form action="/podcasts/<%= podcast._id %>/follow?_method=PUT" method="POST">
+      <form
+        action="/podcasts/<%= podcast._id %>/follow?_method=PUT"
+        method="POST"
+      >
         <button type="submit">Follow</button>
       </form>
-     <p>Follow <%=podcast.title%> to hear when new episodes come out!</p>
-     <%}%>
-      <%} else {%>
-        <p>Login to follow the show!</p>
-        <%}%>
-  
+      <p>Follow <%=podcast.title%> to hear when new episodes come out!</p>
+      <%}%> <%} else {%>
+      <p>Login to follow the show!</p>
+      <%}%>
+
+      <p>
+        Making New Episodes? <% if (podcast.newEpisodes) {%>
+        <img
+          id="checkmark"
+          src="https://e7.pngegg.com/pngimages/325/286/png-clipart-check-mark-symbol-black-check-mark-angle-text-thumbnail.png"
+        />
+        Yes <%} else {%>
+        <img
+          id="xmark"
+          src="https://img1.pnghut.com/6/4/3/CfmpYijLX6/black-and-white-icon-design-check-mark-area-cross.jpg"
+        />
+        No <%}%>
+      </p>
+    </div>
+
+    <div class="podcast-details">
+      <p id="podcast-description"><%=podcast.description%></p>
+      <table id="details-table">
+        <tr>
+          <th>
+            Hosts <% if (user) { %>
+            <form
+              id="add-host"
+              action="/podcasts/<%= podcast._id %>/hosts"
+              method="POST"
+            >
+              <select name="hostId">
+                <% hosts.forEach(h => { %>
+                <option value="<%= h._id %>"><%= h.name %></option>
+                <% }) %>
+              </select>
+              <button type="submit">Add Host</button>
+            </form>
+            <% } %>
+          </th>
+          <td>
+            <%podcast.hosts.forEach(function(h) { %>
+            <p><a id="show-host" href="/hosts/<%=h._id%>"><%=h.name%></a></p>
+            <%})%>
+          </td>
+        </tr>
+        <tr>
+          <th>Genre</th>
+          <td><%=podcast.genre%></td>
+        </tr>
+        <tr>
+          <th>Affiliation</th>
+          <td><%=podcast.affiliation%></td>
+        </tr>
+        <tr>
+          <th>First Aired</th>
+          <td><%=podcast.firstAired%></td>
+        </tr>
+      </table>
+      <% if (user) { %>
+      <a id="update-details" href="/podcasts/<%=podcast._id%>/edit"
+        >Update Details</a
+      >
+      <% } %>
+    </div>
+  </section>
+  <section class="reviews">
+    <h1>Reviews</h1>
+    <% let sum = 0; %> <%podcast.reviews.forEach(function(r) {%> <% return sum =
+    (sum + r.rating)%> <% }) %> <% if (Math.floor(sum/podcast.reviews.length) >
+    1) { %>
+    <p><%=Math.floor(sum/podcast.reviews.length)%> / 5 stars</p>
+    <% } else { %>
+    <p>No Reviews Yet!</p>
+    <%}%> <%if (user) { %>
+
     <p>
-      Making New Episodes? <% if (podcast.newEpisodes) {%>
-      <img
-        id="checkmark"
-        src="https://e7.pngegg.com/pngimages/325/286/png-clipart-check-mark-symbol-black-check-mark-angle-text-thumbnail.png"
-      />
-      Yes <%} else {%>
-      <img
-        id="xmark"
-        src="https://img1.pnghut.com/6/4/3/CfmpYijLX6/black-and-white-icon-design-check-mark-area-cross.jpg"
-      />
-      No <%}%>
+      <a id="leave-review" href="/podcasts/<%=podcast._id%>/reviews/new">
+        Leave a Review!</a
+      >
     </p>
-  </div>
-
-  <div class="podcast-details">
-    <p id="podcast-description"><%=podcast.description%></p>
-    <table id="details-table">
-      <tr>
-        <th>Hosts</th>
-        <td><%=podcast.hosts%></td>
-      </tr>
-      <tr>
-        <th>Genre</th>
-        <td><%=podcast.genre%></td>
-      </tr>
-      <tr>
-        <th>Affiliation</th>
-        <td><%=podcast.affiliation%></td>
-      </tr>
-      <tr>
-        <th>First Aired</th>
-        <td><%=podcast.firstAired%></td>
-      </tr>
-    </table>
-    <% if (user) { %>
-      <a id = "update-details" href="/podcasts/<%=podcast._id%>/edit">Update Details</a>   
-    <% } %>
-  </div>
-</section>
-<section class = "reviews">
-  <h1>Reviews</h1>
-  <% let sum = 0; %> <%podcast.reviews.forEach(function(r) {%> <% return sum =
-  (sum + r.rating)%> <% }) %>
- <% if (Math.floor(sum/podcast.reviews.length) > 1) { %>
-  <p>
-    <%=Math.floor(sum/podcast.reviews.length)%> / 5 stars
-  </p>
-  <% } else {  %>
-      <p> No Reviews Yet!</p>
-<%}%>
-  <%if (user) { %>
-
-  <p>
-    <a id = "leave-review" href="/podcasts/<%=podcast._id%>/reviews/new"> Leave a Review!</a>
-  </p>
-  <%} else {%>
-  <p>Login to Leave a Review!</p>
-  <%}%>
-  <table id="reviews-table">
-    <thead>
-      <th>User</th>
-      <th>Review</th>
-      <th>Rating</th>
-      <th>Would You Recommend?</th>
-      <th></th>
-    </thead>
-    <tbody>
-      <%reviews.forEach(function(r) { %>
-      <tr>
-        <td><%=r.userName%></td>
-        <td><%=r.content%></td>
-        <td><%=r.rating%></td>
-        <td><%if (r.recommended) {%> Yes <% } else {%> No <%}%></td>
-        <td>
-          <% if (user && user._id.equals(r.userId)) { %>
+    <%} else {%>
+    <p>Login to Leave a Review!</p>
+    <%}%>
+    <table id="reviews-table">
+      <thead>
+        <th>User</th>
+        <th>Review</th>
+        <th>Rating</th>
+        <th>Would You Recommend?</th>
+        <th></th>
+      </thead>
+      <tbody>
+        <%reviews.forEach(function(r) { %>
+        <tr>
+          <td><%=r.userName%></td>
+          <td><%=r.content%></td>
+          <td><%=r.rating%></td>
+          <td><%if (r.recommended) {%> Yes <% } else {%> No <%}%></td>
+          <td>
+            <% if (user && user._id.equals(r.userId)) { %>
             <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
               <button type="submit">X</button>
             </form>
-            <a href = "/reviews/<%=r._id%>/edit">Edit</a>
+            <a href="/reviews/<%=r._id%>/edit">Edit</a>
             <%}%>
-        </td>
-      </tr>
-      <%})%>
-    </tbody>
-  </table>
-</section>
+          </td>
+        </tr>
+        <%})%>
+      </tbody>
+    </table>
+  </section>
 </div>
 <%- include('../partials/footer') %>

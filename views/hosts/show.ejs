@@ -1,0 +1,11 @@
+<%- include('../partials/header') %>
+<section id="host-details">
+  <h1><%=host.name%></h1>
+  <p id="host-affiliation"><%= host.affiliation%></p>
+  <% host.podcasts.forEach(function(p) { %>
+  <p><a class="host-podcasts" href="/podcasts/<%=p._id%>"><%=p.title%></a></p>
+  <%})%>
+  <p id="host-description"><%=host.description%></p>
+</section>
+
+<%- include('../partials/footer') %>

@@ -1,65 +1,70 @@
 <%- include('../partials/header') %>
-<div class = "show">
-<section class="podcasts">
-  <h1><%=podcast.title%></h1>
-  <div id="listeners-airing">
-    <p>
-      Making New Episodes? <% if (podcast.newEpisodes) {%>
-      <img id="checkmark"
-        src="https://e7.pngegg.com/pngimages/325/286/png-clipart-check-mark-symbol-black-check-mark-angle-text-thumbnail.png"
-      />
-      Yes <%} else {%>
-      <img id="xmark"
-        src="https://img1.pnghut.com/6/4/3/CfmpYijLX6/black-and-white-icon-design-check-mark-area-cross.jpg"
-      />
-      No <%}%>
-    </p>
-  </div>
+<div class="show">
+  <section class="podcasts">
+    <h1><%=podcast.title%></h1>
+    <div id="listeners-airing">
+      <p>
+        Making New Episodes? <% if (podcast.newEpisodes) {%>
+        <img
+          id="checkmark"
+          src="https://e7.pngegg.com/pngimages/325/286/png-clipart-check-mark-symbol-black-check-mark-angle-text-thumbnail.png"
+        />
+        Yes <%} else {%>
+        <img
+          id="xmark"
+          src="https://img1.pnghut.com/6/4/3/CfmpYijLX6/black-and-white-icon-design-check-mark-area-cross.jpg"
+        />
+        No <%}%>
+      </p>
+    </div>
 
-  <div class="podcast-details">
-    <p id="podcast-description"><%=podcast.description%></p>
-    <table id="details-table">
-      <tr>
-        <th>Hosts</th>
-        <td><%=podcast.hosts%></td>
-      </tr>
-      <tr>
-        <th>Genre</th>
-        <td><%=podcast.genre%></td>
-      </tr>
-      <tr>
-        <th>Affiliation</th>
-        <td><%=podcast.affiliation%></td>
-      </tr>
-      <tr>
-        <th>First Aired</th>
-        <td><%=podcast.firstAired%></td>
-      </tr>
-    </table>
-  </div>
-</section>
-<section class = "reviews">
-  <h1>Leave a Review of <%=podcast.title%></h1>
-  <form action="/podcasts/<%=podcast._id%>/reviews" method="POST">
-    <label>What to you think of <%=podcast.title%>?</label>
-    <textarea name="content"></textarea>
-    <br />
-    <label>Rating </label>
-    <select name="rating">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5" selected>5</option>
-    </select>
-    <br />
-    <label>Would you recommend this podcast?</label>
-    <input type="checkbox" name="recommended" />
-    <br />
-    <input type="submit" value="Post Your Review" />
-  </form>
-</section>
+    <div class="podcast-details">
+      <p id="podcast-description"><%=podcast.description%></p>
+      <table id="details-table">
+        <tr>
+          <th>Hosts</th>
+          <td>
+            <%podcast.hosts.forEach(function(h) { %>
+            <p><a id="show-host" href="/hosts/<%=h._id%>"><%=h.name%></a></p>
+            <%})%>
+          </td>
+        </tr>
+        <tr>
+          <th>Genre</th>
+          <td><%=podcast.genre%></td>
+        </tr>
+        <tr>
+          <th>Affiliation</th>
+          <td><%=podcast.affiliation%></td>
+        </tr>
+        <tr>
+          <th>First Aired</th>
+          <td><%=podcast.firstAired%></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <section class="reviews">
+    <h1>Leave a Review of <%=podcast.title%></h1>
+    <form action="/podcasts/<%=podcast._id%>/reviews" method="POST">
+      <label>What to you think of <%=podcast.title%>?</label>
+      <textarea name="content"></textarea>
+      <br />
+      <label>Rating </label>
+      <select name="rating">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5" selected>5</option>
+      </select>
+      <br />
+      <label>Would you recommend this podcast?</label>
+      <input type="checkbox" name="recommended" />
+      <br />
+      <input type="submit" value="Post Your Review" />
+    </form>
+  </section>
 </div>
 
-  <%- include('../partials/footer') %>
-
+<%- include('../partials/footer') %>

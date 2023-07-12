@@ -1,41 +1,40 @@
 <%- include('../partials/header') %>
-<div id= "index">
-<h1 id="podasts">Podcasts</h1>
-<%if(user){%>
-<a id="add-a-podcast" href="/podcasts/new">Add a Podcast</a>
-<% }%>
-<table>
-  <thead>
-    <th>Title</th>
-    <th>Hosts</th>
-    <th>Genre</th>
-    <th>Ratings</th>
-    <th>Affiliation</th>
-    <th>No. of Listeners</th>
-    <th>First Aired</th>
-  </thead>
-  <tbody>
-    <% podcasts.forEach(function(p){%>
-    <tr>
-      <td><a href="/podcasts/<%=p._id%>"><%=p.title%></a></td>
-      <td><%=p.hosts%></td>
-      <td><%=p.genre%></td>
-      <% let sum = 0; %> <%p.reviews.forEach(function(r) {%> <% return sum =
-      (sum + r.rating)%> <% }) %>
-      
-        <% if (Math.floor(sum/p.reviews.length) > 1) { %>
-          <td>
-            <%=Math.floor(sum/p.reviews.length)%>
-          </td>
-          <% } else {  %>
-              <td> No Reviews Yet!</td>
-      <%}%>
-      <td><%=p.affiliation%></td>
-      <td><%=p.usersFollowing.length%></td>
-      <td><%=p.firstAired%></td>
-    </tr>
-    <% }) %>
-  </tbody>
-</table>
+<div id="index">
+  <h1 id="podasts">Podcasts</h1>
+  <%if(user){%>
+  <div id="index-links">
+    <a id="add-a-podcast" href="/podcasts/new">Add a Podcast</a>
+    <img id="logo-small" src="https://i.imgur.com/pSWmGwN.png" />
+    <a id="add-a-host" href="/hosts/new">Add a Show Host</a>
+  </div>
+  <% }%>
+  <table>
+    <thead>
+      <th>Title</th>
+      <th>Genre</th>
+      <th>Ratings</th>
+      <th>Affiliation</th>
+      <th>No. of Listeners</th>
+      <th>First Aired</th>
+    </thead>
+    <tbody>
+      <% podcasts.forEach(function(p){%>
+      <tr>
+        <td><a href="/podcasts/<%=p._id%>"><%=p.title%></a></td>
+        <td><%=p.genre%></td>
+        <% let sum = 0; %> <%p.reviews.forEach(function(r) {%> <% return sum =
+        (sum + r.rating)%> <% }) %> <% if (Math.floor(sum/p.reviews.length) > 1)
+        { %>
+        <td><%=Math.floor(sum/p.reviews.length)%></td>
+        <% } else { %>
+        <td>No Reviews Yet!</td>
+        <%}%>
+        <td><%=p.affiliation%></td>
+        <td><%=p.usersFollowing.length%></td>
+        <td><%=p.firstAired%></td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
 </div>
 <%- include('../partials/footer') %>
