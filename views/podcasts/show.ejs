@@ -1,5 +1,6 @@
 <%- include('../partials/header') %>
-<section id="podcasts">
+<div class = "show">
+<section class="podcasts">
   <h1><%=podcast.title%></h1>
   <div id="listeners-airing">
     <%if(user) {%>
@@ -30,7 +31,7 @@
     </p>
   </div>
 
-  <div id="podcast-details">
+  <div class="podcast-details">
     <p id="podcast-description"><%=podcast.description%></p>
     <table id="details-table">
       <tr>
@@ -51,11 +52,11 @@
       </tr>
     </table>
     <% if (user) { %>
-      <a href="/podcasts/<%=podcast._id%>/edit">Update Details</a>   
+      <a id = "update-details" href="/podcasts/<%=podcast._id%>/edit">Update Details</a>   
     <% } %>
   </div>
 </section>
-<section>
+<section class = "reviews">
   <h1>Reviews</h1>
   <% let sum = 0; %> <%podcast.reviews.forEach(function(r) {%> <% return sum =
   (sum + r.rating)%> <% }) %>
@@ -66,13 +67,13 @@
   <% } else {  %>
       <p> No Reviews Yet!</p>
 <%}%>
-  <p><%if (user) { %></p>
+  <%if (user) { %>
 
-  <p class="leave-review">
-    <a href="/podcasts/<%=podcast._id%>/reviews/new"> Leave a Review!</a>
+  <p>
+    <a id = "leave-review" href="/podcasts/<%=podcast._id%>/reviews/new"> Leave a Review!</a>
   </p>
   <%} else {%>
-  <p class="leave-review">Login to Leave a Review!</p>
+  <p>Login to Leave a Review!</p>
   <%}%>
   <table id="reviews-table">
     <thead>
@@ -94,7 +95,7 @@
             <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
               <button type="submit">X</button>
             </form>
-            / <a href = "/reviews/<%=r._id%>/edit">Edit</a>
+            <a href = "/reviews/<%=r._id%>/edit">Edit</a>
             <%}%>
         </td>
       </tr>
@@ -102,4 +103,5 @@
     </tbody>
   </table>
 </section>
+</div>
 <%- include('../partials/footer') %>

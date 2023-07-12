@@ -1,11 +1,9 @@
 <%- include('../partials/header') %>
-
+<div id= "index">
 <h1 id="podasts">Podcasts</h1>
 <%if(user){%>
 <a id="add-a-podcast" href="/podcasts/new">Add a Podcast</a>
-<% } else {%>
-<p>Login to Add a Podcast!</p>
-<%}%>
+<% }%>
 <table>
   <thead>
     <th>Title</th>
@@ -39,4 +37,5 @@
     <% }) %>
   </tbody>
 </table>
+</div>
 <%- include('../partials/footer') %>

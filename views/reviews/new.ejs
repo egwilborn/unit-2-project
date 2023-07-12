@@ -1,5 +1,6 @@
 <%- include('../partials/header') %>
-<section id="podcasts">
+<div class = "show">
+<section class="podcasts">
   <h1><%=podcast.title%></h1>
   <div id="listeners-airing">
     <p>
@@ -15,7 +16,7 @@
     </p>
   </div>
 
-  <div id="podcast-details">
+  <div class="podcast-details">
     <p id="podcast-description"><%=podcast.description%></p>
     <table id="details-table">
       <tr>
@@ -37,7 +38,7 @@
     </table>
   </div>
 </section>
-<section>
+<section class = "reviews">
   <h1>Leave a Review of <%=podcast.title%></h1>
   <form action="/podcasts/<%=podcast._id%>/reviews" method="POST">
     <label>What to you think of <%=podcast.title%>?</label>
@@ -58,6 +59,7 @@
     <input type="submit" value="Post Your Review" />
   </form>
 </section>
+</div>
 
   <%- include('../partials/footer') %>
 

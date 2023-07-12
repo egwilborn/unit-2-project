@@ -1,5 +1,6 @@
 <%- include('../partials/header') %>
-<section id="podcasts">
+<div class = "show">
+<section class="podcasts">
   <h1><%=podcast.title%></h1>
   <div id="listeners-airing">
     <p>
@@ -15,7 +16,7 @@
     </p>
   </div>
 
-  <div id="podcast-details">
+  <div class="podcast-details">
     <p id="podcast-description"><%=podcast.description%></p>
     <table id="details-table">
       <tr>
@@ -37,7 +38,7 @@
     </table>
   </div>
 </section>
-<section>
+<section class = "reviews">
   <h1>Update Your Review of <%=podcast.title%></h1>
   <form action="/reviews/<%=review._id%>?_method=PUT" method="POST">
 
@@ -60,6 +61,6 @@
     <input type="submit" value="Update Your Review" />
   </form>
 </section>
-
+</div>
   <%- include('../partials/footer') %>
 

@@ -8,13 +8,16 @@
   </head>
   <body>
     <nav>
-      <a href="/podcasts">
-        <img id="logo" src="https://i.imgur.com/vPrW3UY.png" /> RadioDb</a
-      >
+      <img id="logo" src="https://i.imgur.com/vPrW3UY.png" />
+      <a href="/podcasts"> RadioDb</a>
+      <div id = "login">
+      <img id="login-graphic" src="https://i.pinimg.com/736x/97/21/05/972105c5a775f38cf33d3924aea053f1.jpg
+      " />
       <% if (user) { %>
       <a href="/logout" class="login"> Log Out</a>
       <%} else { %>
-      <a href="/auth/google" class="login"> Login</a>
+      <a href="/auth/google" class = "login"> Login</a>
       <%}%>
+      </div>
     </nav>
  

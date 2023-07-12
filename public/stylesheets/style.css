@@ -2,19 +2,99 @@
   box-sizing: border-box;
 }
 
-#logo {
-  height: 80px;
-  width: 80px;
-}
 nav {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  font-size: 20px;
+  background-color: rgb(115 115 115);
 }
-.login {
-  align-self: flex-end;
+body{
+  background-color: rgb(180, 212, 187)
 }
 
+#login {
+  margin-left: auto;
+  margin-right: 20px;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  color: white;
+}
+.login {
+  margin-right:10px;
+}
+/* INDEX */
+#index {
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+}
+#index > table {
+  margin-top:20px;
+  margin-left: 30px;
+  margin-right:30px;
+  border-collapse: separate;
+  border-spacing:0 15px;
+}
+#index > table > thead {
+  background-color: rgb(115 115 115);
+}
+th {
+  padding: 5px;
+}
+td {
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 5px;
+}
+/* SHOW */
+.show {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 2fr 3fr;
+}
+.podcasts {
+  grid-column: 1/2;
+  grid-row: 1/1;
+  display:flex;
+  flex-direction:column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px;
+}
+.reviews {
+  grid-column: 2/3;
+  grid-row: 1/1;
+  display: flex;
+  flex-direction:column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px;
+}
+.reviews > table > thead {
+  background-color: rgb(115 115 115);
+}
+.podcast-details {
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+}
+/* NEW */
+.new-podcast {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content:flex-start;
+  align-items:flex-start;
+  margin-left: 20px;
+  margin-top: 20px;
+
+}
+/* IMAGES */
 #checkmark {
   height: 10px;
   width: 10px;
@@ -23,3 +103,38 @@ nav {
   height: 10px;
   width: 10px;
 }
+#logo {
+  height: 80px;
+  width: 80px;
+  border-radius: 25%;
+  margin-right:10px;
+  margin-left:10px;
+}
+#login-graphic {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  justify-self:flex-end;
+  margin-right: 10px;
+}
+/* LINKS */
+
+#login > a:link, a:visited {
+  color:white;
+}
+nav > a:link, a:visited {
+  color:white;
+}
+td > a:visited, a:link {
+  color: rgb(115 115 115)
+}
+#add-a-podcast:link, #add-a-podcast:visited {
+  color: rgb(115 115 115);
+}
+#update-details:link, #update-details:visited {
+  color: rgb(115 115 115);
+}
+#leave-review:link, #leave-review:visited {
+  color: rgb(115 115 115);
+}
+

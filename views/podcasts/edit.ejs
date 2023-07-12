@@ -1,15 +1,22 @@
 <%- include('../partials/header') %>
-
+<div class = "new-podcast">
 <form id="edit-podcast-form" action="/podcasts/<%=podcast._id%>?_method=PUT" method="POST">
+  <div class = "podcsst-title">
   <label>Title:</label>
   <input value = "<%=podcast.title%>" type="text" name="title" />
+  </div>
   <br />
+  <div class = "podcast-hosts">
   <label>Hosts:</label>
   <input value = "<%=podcast.hosts%>"type="text" name="hosts" />
+  </div>
   <br />
+<div class = "podcast-description">
   <label>Description:</label>
   <textarea name="description"><%=podcast.description%></textarea>
+  </div>
   <br />
+<div class = "podcast-genre">
   <label>Genre:</label>
   <select name="genre">
     <option <% if(podcast.genre === "News") {%> selected <%}%> value="News">News</option>
@@ -23,20 +30,28 @@
     <option <% if(podcast.genre === "Sports") {%> selected <%}%> value="Sports">Sports</option>
     <option <% if(podcast.genre === "True Crime") {%> selected <%}%> value="True Crime">True Crime</option>
   </select>
+  </div>
   <br />
+<div class = "podcast-affiliation">
   <label>Affiliation:</label>
   <input value = "<%=podcast.affiliation%>" type="text" name="affiliation" />
+  </div>
   <br />
+<div class = "podcast-aired">
   <label>First Aired (Year):</label>
   <input value = "<%=podcast.firstAired%>"name="firstAired" type="number" placeholder="ex: 2018" />
+  </div>
   <br />
+<div class="podcast-episodes">
   <label>Still Making New Episodes?</label>
   <input <% if(podcast.newEpisodes === true) {%> checked <%}%>name="newEpisodes" type="checkbox" />
+</div>
   <br />
   <input type="submit" value="Update This Podcast" />
 </form>
 <br>
 <form action="/podcasts/<%= podcast._id %>?_method=DELETE" method="POST">
     <button type="submit">Delete This Podcast</button>
-
+    </form>
+</div>
 <%- include('../partials/footer') %>
