@@ -47,8 +47,10 @@
   <section class="reviews">
     <h1>Leave a Review of <%=podcast.title%></h1>
     <form action="/podcasts/<%=podcast._id%>/reviews" method="POST">
-      <label>What to you think of <%=podcast.title%>?</label>
-      <textarea name="content"></textarea>
+      <div class="review-content-form">
+        <label>What do you think of <%=podcast.title%>?</label>
+        <textarea class="review-content" name="content"></textarea>
+      </div>
       <br />
       <label>Rating </label>
       <select name="rating">

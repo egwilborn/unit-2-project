@@ -3,12 +3,12 @@
   <form id="new-podcast-form" action="/podcasts" method="POST">
     <div class="podcast-title">
       <label>Title:</label>
-      <input type="text" name="title" />
+      <input autocomplete="off" type="text" name="title" />
     </div>
     <br />
     <div class="podcast-hosts"></div>
     <br />
-    <div class="podcast-description">
+    <div class="podcast-description-form">
       <label>Description:</label>
       <textarea name="description"></textarea>
     </div>
@@ -31,7 +31,7 @@
     <br />
     <div class="podcast-affiliation">
       <label>Affiliation:</label>
-      <input type="text" name="affiliation" />
+      <input autocomplete="off" type="text" name="affiliation" />
     </div>
     <br />
     <div class="podcast-aired">

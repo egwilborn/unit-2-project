@@ -15,10 +15,7 @@ module.exports = {
 
 async function index(req, res) {
   try {
-    const podcasts = await Podcast.find({});
-    podcasts.forEach(function (p) {
-      p.populate("hosts");
-    });
+    const podcasts = await Podcast.find({}).sort({ genre: "asc" });
     res.render("podcasts/index", { podcasts });
   } catch (err) {
     console.log(err);
@@ -73,7 +70,6 @@ async function update(req, res) {
   try {
     const podcast = await Podcast.findById(req.params.id);
     podcast.title = req.body.title;
-    podcast.hosts = req.body.hosts;
     podcast.description = req.body.description;
     podcast.genre = req.body.genre;
     podcast.affiliation = req.body.affiliation;

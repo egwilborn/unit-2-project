@@ -12,7 +12,10 @@ nav {
 body {
   background-color: rgb(180, 212, 187);
 }
-
+textarea {
+  height: 150px;
+  width: 200px;
+}
 #login {
   margin-left: auto;
   margin-right: 20px;
@@ -88,6 +91,22 @@ td {
   justify-content: center;
   align-items: center;
 }
+#host {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+#host-remove {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+.podcast-description-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
 /* NEW */
 .new-podcast {
   padding: 10px;
@@ -106,8 +125,17 @@ td {
   align-items: center;
 }
 #host-description {
-  height: 100px;
-  width: 400px;
+  height: 40vmin;
+  width: 80vmin;
+}
+#delete-host {
+  margin-top: 10px;
+}
+.host-description-form {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 5px;
 }
 /* IMAGES */
 #checkmark {
@@ -138,6 +166,17 @@ td {
   margin-right: 7px;
   margin-left: 7px;
 }
+/* REVIEWS */
+.review-content {
+  height: 100px;
+  width: 200px;
+}
+.review-content-form {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 5px;
+}
 /* LINKS */
 
 #login > a:link,
@@ -152,29 +191,15 @@ td > a:visited,
 a:link {
   color: rgb(115 115 115);
 }
-#add-a-podcast:link,
-#add-a-podcast:visited {
+.grey-link:visited,
+.grey-link:link {
   color: rgb(115 115 115);
 }
-#update-details:link,
-#update-details:visited {
-  color: rgb(115 115 115);
+.grey-link:hover {
+  color: rgb(87, 144, 87);
 }
-#leave-review:link,
-#leave-review:visited {
-  color: rgb(115 115 115);
-}
-#show-host:link,
-#show-host:visited {
-  color: rgb(115, 115, 115);
-}
-.host-podcasts:link,
-.host-podcasts:visited {
-  color: rgb(115 115 115);
-}
-#add-a-host:link,
-#add-a-host:visited {
-  color: rgb(115 115 115);
+a:hover {
+  color: rgb(127, 182, 127);
 }
 
 @media only screen and (max-wdith: 700px) {

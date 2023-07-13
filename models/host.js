@@ -8,7 +8,6 @@ const hostSchema = new Schema(
     name: { type: String, required: true },
     description: String,
     affiliation: String,
-    podcasts: [{ type: Schema.Types.ObjectId, ref: "Podcast" }],
   },
   {
     timestamps: true,

@@ -44,9 +44,10 @@
   <h1>Update Your Review of <%=podcast.title%></h1>
   <form action="/reviews/<%=review._id%>?_method=PUT" method="POST">
 
-
-    <label>What to you think of <%=podcast.title%>?</label>
-    <textarea name="content"><%=review.content%></textarea>
+<div class = "review-content-form">
+    <label>What do you think of <%=podcast.title%>?</label>
+    <textarea class = "review-content" name="content"><%=review.content%></textarea>
+    </div>
     <br />
     <label>Rating </label>
     <select name="rating">

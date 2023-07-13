@@ -2,10 +2,18 @@
 <section id="host-details">
   <h1><%=host.name%></h1>
   <p id="host-affiliation"><%= host.affiliation%></p>
-  <% host.podcasts.forEach(function(p) { %>
-  <p><a class="host-podcasts" href="/podcasts/<%=p._id%>"><%=p.title%></a></p>
+  <% hostsPodcasts.forEach(function(p) { %>
+  <p><a class="grey-link" href="/podcasts/<%=p._id%>"><%=p.title%></a></p>
   <%})%>
-  <p id="host-description"><%=host.description%></p>
+  <div id="host-description">
+    <p><%=host.description%></p>
+  </div>
+  <% if (user) { %>
+  <a class="grey-link" href="/hosts/<%=host._id%>/edit">Edit Host Details</a>
+  <form action="/hosts/<%= host._id %>?_method=DELETE" method="POST">
+    <button id="delete-host" type="submit">Delete Show Host</button>
+  </form>
+  <% } %>
 </section>
 
 <%- include('../partials/footer') %>

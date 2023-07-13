@@ -1,22 +1,26 @@
 <%- include('../partials/header') %>
 <div class="new-podcast" id="new-host">
-  <form id="new-host-form" action="/hosts" method="POST">
+  <form
+    id="new-host-form"
+    action="/hosts/<%=host._id%>?_method=PUT"
+    method="POST"
+  >
     <div class="host-name">
       <label>Name:</label>
-      <input autocomplete="off" type="text" name="name" />
+      <input value="<%=host.name%>" type="text" name="name" />
     </div>
     <br />
     <div class="host-affiliation">
       <label>Affiliation:</label>
-      <input autocomplete="off" type="text" name="affiliation" />
+      <input value="<%=host.affiliation%>" type="text" name="affiliation" />
     </div>
     <br />
     <div class="host-description-form">
       <label>Description:</label>
-      <textarea name="description"></textarea>
+      <textarea name="description"><%=host.description%></textarea>
     </div>
     <br />
-    <input type="submit" value="Add a Show Host" />
+    <input type="submit" value="Edit Show Host" />
   </form>
 </div>
 <%- include('../partials/footer') %>

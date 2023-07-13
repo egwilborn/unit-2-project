@@ -54,7 +54,15 @@
           </th>
           <td>
             <%podcast.hosts.forEach(function(h) { %>
-            <p><a id="show-host" href="/hosts/<%=h._id%>"><%=h.name%></a></p>
+            <div id="host">
+              <a class="grey-link" href="/hosts/<%=h._id%>"><%=h.name%></a>
+              <form
+                action="/podcasts/<%= podcast._id %>/hosts/<%=h._id%>?_method=DELETE"
+                method="POST"
+              >
+                <button id="host-remove" type="submit">X</button>
+              </form>
+            </div>
             <%})%>
           </td>
         </tr>
@@ -72,7 +80,7 @@
         </tr>
       </table>
       <% if (user) { %>
-      <a id="update-details" href="/podcasts/<%=podcast._id%>/edit"
+      <a class="grey-link" href="/podcasts/<%=podcast._id%>/edit"
         >Update Details</a
       >
       <% } %>
@@ -89,7 +97,7 @@
     <%}%> <%if (user) { %>
 
     <p>
-      <a id="leave-review" href="/podcasts/<%=podcast._id%>/reviews/new">
+      <a class="grey-link" href="/podcasts/<%=podcast._id%>/reviews/new">
         Leave a Review!</a
       >
     </p>
@@ -116,7 +124,7 @@
             <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
               <button type="submit">X</button>
             </form>
-            <a href="/reviews/<%=r._id%>/edit">Edit</a>
+            <a class="grey-link" href="/reviews/<%=r._id%>/edit">Edit</a>
             <%}%>
           </td>
         </tr>

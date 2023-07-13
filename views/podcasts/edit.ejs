@@ -6,12 +6,7 @@
   <input value = "<%=podcast.title%>" type="text" name="title" />
   </div>
   <br />
-  <div class = "podcast-hosts">
-  <label>Hosts:</label>
-  <input value = "<%=podcast.hosts%>"type="text" name="hosts" />
-  </div>
-  <br />
-<div class = "podcast-description">
+<div class = "podcast-description-form">
   <label>Description:</label>
   <textarea name="description"><%=podcast.description%></textarea>
   </div>
@@ -19,7 +14,7 @@
 <div class = "podcast-genre">
   <label>Genre:</label>
   <select name="genre">
-    <option <% if(podcast.genre === "News") {%> selected <%}%> value="News">News</option>
+    <option <% if(podcast.genre === "News") {%> selected <%}%> value="News"> News</option>
     <option <% if(podcast.genre === "Pop Culture") {%> selected <%}%> value="Pop Culture">Pop Culture</option>
     <option <% if(podcast.genre === "Science") {%> selected <%}%> value="Science">Science</option>
     <option <% if(podcast.genre === "Fiction") {%> selected <%}%> value="Fiction">Fiction</option>

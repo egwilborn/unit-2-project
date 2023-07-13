@@ -3,9 +3,9 @@
   <h1 id="podasts">Podcasts</h1>
   <%if(user){%>
   <div id="index-links">
-    <a id="add-a-podcast" href="/podcasts/new">Add a Podcast</a>
+    <a class="grey-link" href="/podcasts/new">Add a Podcast</a>
     <img id="logo-small" src="https://i.imgur.com/pSWmGwN.png" />
-    <a id="add-a-host" href="/hosts/new">Add a Show Host</a>
+    <a class="grey-link" href="/hosts/new">Add a Show Host</a>
   </div>
   <% }%>
   <table>
@@ -20,7 +20,9 @@
     <tbody>
       <% podcasts.forEach(function(p){%>
       <tr>
-        <td><a href="/podcasts/<%=p._id%>"><%=p.title%></a></td>
+        <td>
+          <a class="grey-link" href="/podcasts/<%=p._id%>"><%=p.title%></a>
+        </td>
         <td><%=p.genre%></td>
         <% let sum = 0; %> <%p.reviews.forEach(function(r) {%> <% return sum =
         (sum + r.rating)%> <% }) %> <% if (Math.floor(sum/p.reviews.length) > 1)
