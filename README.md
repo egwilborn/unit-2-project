@@ -1,35 +1,37 @@
-# passport-boilerplate
+# RadioDb
 
+A database for podcasts! Browse RadioDb to see what podcasts people are listening to and find new, fun podcasts to check out.
 
-This is your passport boilerplate.
+# Preview
 
-## Setup 
+View the list of podcasts in the database.
+<img src="public/images/screenshots/Home-Screen.png">
 
-1. Clone the repo
-2. Rename the folder to your Project
-3. Delete the `.git` file, when you are in the root of the file, you can press `ls` and you should see a `.git` file, then go ahead and run `rm -rf .git`
+See all the information available on each podcast and leave a review.
+<img src="public/images/screenshots/Podcast-Details.png">
 
+View each host and what other podcasts they may host.
+<img src="public/images/screenshots/Host-Details.png">
 
-#### Setup your git repo
-0. Setup your `.env` file and add all the things you need! (look at mongoose movies for reference!)
-1. in the project root `git init`
-2. `git add .` to add all the starter code
-3. `git commit -m "setup boilerplate"` 
-4. go to github and create your github and create a repo (Without a readme or liscense you can add that later!)
-5. copy the remote address
-6. In your terminal add the remote `git remote add origin yourGithubRepo'sAddressGoesHere`
-7. `git pull origin main` If a screen pulls up asking you to do something just press `:q` and then `enter` (thats vim btw :) )
-8. `git push origin main`
+Add your other podcasts or hosts that aren't in the database.
+<img src="public/images/screenshots/Add-Podcast.png">
 
-#### Setup your login (THE APP WON'T WORK until you do, no VIEWS are setup, or the landing route)
+## Technologies Used
 
-0. Setup your database connection string
-1. Then Setup Your User Model, 
-2. Follow the steps from the lesson plan to get your Google login credentials for your `.env` file (create the file if you haven't), or you can just copy the ones from earlier if you want to reuse them.
-3. Setup the Code in your config passport 
-4. Setup your callback routes in your `routes/index`
-5. Setup a view and test your login!
+•Express.js
+•Node.js
+•Mongodb
+•JavaScript
+•HTML/CSS
 
-#### Make a commit 
+# Getting Started
 
-```git commit -m "setup up oauth and User Model"```
+Check out RadioDB here:
+https://long-pear-seahorse-suit.cyclic.app/podcasts
+
+Login with google to be able to add and update your favorite podcasts.
+
+# Next Steps
+
+- Add in a sorting feature on the index so a user can sort based on genre or ratings
+- Add in a top podcasts chart based on the top ratings to see what everyone is listeing to
