@@ -22,7 +22,7 @@
       <tr>
         <th>Hosts</th>
         <td><%podcast.hosts.forEach(function(h) { %>
-          <p><a id="show-host" href="/hosts/<%=h._id%>"><%=h.name%></a></p>
+          <p><a class = "grey-link" href="/hosts/<%=h._id%>"><%=h.name%></a></p>
           <%})%></td>
       </tr>
       <tr>
@@ -61,7 +61,7 @@
     <label>Would you recommend this podcast?</label>
     <input <% if(review.recommended === true) {%> checked <%}%> type="checkbox" name="recommended" />
     <br />
-    <input type="submit" value="Update Your Review" />
+    <input class = "button" type="submit" value="Update Your Review" />
   </form>
 </section>
 </div>

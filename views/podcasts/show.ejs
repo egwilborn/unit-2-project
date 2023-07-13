@@ -56,12 +56,14 @@
             <%podcast.hosts.forEach(function(h) { %>
             <div id="host">
               <a class="grey-link" href="/hosts/<%=h._id%>"><%=h.name%></a>
+              <% if (user) { %>
               <form
                 action="/podcasts/<%= podcast._id %>/hosts/<%=h._id%>?_method=DELETE"
                 method="POST"
               >
-                <button id="host-remove" type="submit">X</button>
+                <button class="delete-button" type="submit">X</button>
               </form>
+              <% } %>
             </div>
             <%})%>
           </td>
@@ -122,7 +124,7 @@
           <td>
             <% if (user && user._id.equals(r.userId)) { %>
             <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
-              <button type="submit">X</button>
+              <button class="delete-button" type="submit">X</button>
             </form>
             <a class="grey-link" href="/reviews/<%=r._id%>/edit">Edit</a>
             <%}%>

@@ -25,7 +25,7 @@
           <th>Hosts</th>
           <td>
             <%podcast.hosts.forEach(function(h) { %>
-            <p><a id="show-host" href="/hosts/<%=h._id%>"><%=h.name%></a></p>
+            <p><a class="grey-link" href="/hosts/<%=h._id%>"><%=h.name%></a></p>
             <%})%>
           </td>
         </tr>
@@ -64,7 +64,7 @@
       <label>Would you recommend this podcast?</label>
       <input type="checkbox" name="recommended" />
       <br />
-      <input type="submit" value="Post Your Review" />
+      <input class="button" type="submit" value="Post Your Review" />
     </form>
   </section>
 </div>

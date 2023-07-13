@@ -42,7 +42,7 @@
   <input <% if(podcast.newEpisodes === true) {%> checked <%}%>name="newEpisodes" type="checkbox" />
 </div>
   <br />
-  <input type="submit" value="Update This Podcast" />
+  <input class = "button" type="submit" value="Update This Podcast" />
 </form>
 <br>
 <form action="/podcasts/<%= podcast._id %>?_method=DELETE" method="POST">
