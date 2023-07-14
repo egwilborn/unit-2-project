@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const hostsCtrl = require("../controllers/hosts");
 
-//hosts routes are all prepended with "/hosts"
 router.get("/hosts/new", hostsCtrl.new);
 //adds new host to db
 router.post("/hosts", hostsCtrl.create);
