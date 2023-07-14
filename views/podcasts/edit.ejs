@@ -1,6 +1,6 @@
 <%- include('../partials/header') %>
 <div class = "new-podcast">
-<form id="edit-podcast-form" action="/podcasts/<%=podcast._id%>?_method=PUT" method="POST">
+<form id="new-podcast-form" action="/podcasts/<%=podcast._id%>?_method=PUT" method="POST">
   <div class = "podcsst-title">
   <label>Title:</label>
   <input value = "<%=podcast.title%>" type="text" name="title" />

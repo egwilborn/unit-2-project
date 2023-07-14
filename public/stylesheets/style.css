@@ -11,6 +11,8 @@ nav {
 }
 body {
   background-color: rgb(180, 212, 187);
+  margin-right: 20px;
+  margin-left: 20px;
 }
 
 textarea {
@@ -118,6 +120,24 @@ td {
   margin-left: 20px;
   margin-top: 20px;
 }
+body > #new-host-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+#new-host-form > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+#new-podcast-form > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
 /* HOST-SHOW */
 #host-details {
   display: flex;
@@ -195,7 +215,7 @@ a:visited {
 }
 .grey-link:visited,
 .grey-link:link {
-  color: rgb(115 115 115);
+  color: rgb(102, 101, 101);
 }
 .grey-link:hover {
   color: rgb(87, 144, 87);
@@ -212,7 +232,11 @@ a:hover {
 }
 button,
 .button {
-  background-color: rgb(137, 137, 137);
+  background-color: rgb(160, 160, 160);
+  border: none;
+  padding: 7px 7px 7px 7px;
+  border-radius: 5%;
+  margin-top: 5px;
 }
 
 .textarea {
