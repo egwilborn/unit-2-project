@@ -18,6 +18,8 @@
     "mongoose": "^7.0.2",
     "morgan": "~1.9.1",
     "passport": "^0.6.0",
-    "passport-google-oauth": "^2.0.0"
+    "passport-google-oauth": "^2.0.0",
+    "semantic-ui-css": "^2.5.0",
+    "semantic-ui-react": "^2.1.4"
   }
 }
